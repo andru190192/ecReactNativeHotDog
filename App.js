@@ -22,7 +22,7 @@ const App = () => {
 
   /*useEffect(() => {
     auth()
-        .signInWithEmailAndPassword('caguachisaca@gmail.com', '123456')
+        .signInWithEmailAndPassword('andres@gmail.com', '123456')
         .then(() => {
           console.log('User signed in anonymously');
         })
@@ -32,7 +32,7 @@ const App = () => {
           }
           console.error(error);
         });
-  }, [])*/
+  }, []);*/
 
   async function onGoogleButtonPress() {
     // Get the users ID token
