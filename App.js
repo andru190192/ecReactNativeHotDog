@@ -13,7 +13,10 @@ import auth from '@react-native-firebase/auth';
 import { GoogleSignin } from '@react-native-community/google-signin';
 import Login from './src/screens/login';
 
-const VISION_API_KEY = 'AIzaSyC1gdfBWhu1K4etrIQT6C1f-Iz9JBElR-Q';
+const VISION_API_KEY = 'AIzaSyD1JobpnvqF3dArUScULFmF0n8zmBW4z08';
+GoogleSignin.configure({
+  webClientId: '908408771733-f43c337m9phonmrmtmcf588g6o5s93id.apps.googleusercontent.com',
+});
 
 const App = () => {
 
@@ -32,25 +35,14 @@ const App = () => {
   }, [])*/
 
   async function onGoogleButtonPress() {
-    console.log('entre');
-    GoogleSignin.configure({
-      webClientId: '908408771733-f43c337m9phonmrmtmcf588g6o5s93id.apps.googleusercontent.com',
-    });
-    await GoogleSignin.hasPlayServices();
-    const userInfo = await GoogleSignin.signIn();
-    console.log('userInfo', userInfo);
     // Get the users ID token
     const { idToken } = await GoogleSignin.signIn();
-    console.log('idToken', idToken);
 
     // Create a Google credential with the token
     const googleCredential = auth.GoogleAuthProvider.credential(idToken);
-    console.log('googleCredential', googleCredential);
 
     // Sign-in the user with the credential
-    const a = auth().signInWithCredential(googleCredential);
-    console.log('a', a);
-    return;
+    return auth().signInWithCredential(googleCredential);
   }
 
   async function processImage() {
@@ -84,8 +76,15 @@ const App = () => {
     )
   }
 
-  function onHandlerLogout() {
-    auth().signOut().then(() => console.log('User signed out!'));
+  async function onHandlerLogout() {
+    try {
+      auth().signOut().then(() => console.log('User signed out!'));
+      await GoogleSignin.revokeAccess();
+      await GoogleSignin.signOut();
+      //this.setState({ user: null }); // Remember to remove the user from your app's state as well
+    } catch (error) {
+      console.error(error);
+    }
   }
 
   return (
