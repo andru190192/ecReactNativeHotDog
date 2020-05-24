@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "908408771733",
+    "firebase_url": "https://hot-dog-4122d.firebaseio.com",
+    "project_id": "hot-dog-4122d",
+    "storage_bucket": "hot-dog-4122d.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:908408771733:android:6a91186ed47ad2932df79c",
+        "android_client_info": {
+          "package_name": "com.ecreactnativehotdog"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "908408771733-3tr2l45k7egf4gb8ofhphudtgctelh1e.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.ecreactnativehotdog",
+            "certificate_hash": "5e8f16062ea3cd2c4a0d547876baa6f38cabf625"
+          }
+        },
+        {
+          "client_id": "908408771733-f43c337m9phonmrmtmcf588g6o5s93id.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAy75TLGVkoredrD11imik73GwSg71qNhY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "908408771733-f43c337m9phonmrmtmcf588g6o5s93id.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
