@@ -4,7 +4,7 @@ import {View, TouchableOpacity, Text} from 'react-native';
 import LottieView from 'lottie-react-native';
 import {Item, Input} from 'native-base';
 
-const LoginScreen = () => {
+const LoginScreen = ({navigation}) => {
   return (
     <View
       style={{
@@ -21,7 +21,7 @@ const LoginScreen = () => {
       <View style={{marginHorizontal: 34, marginBottom: 34}}>
         <Item>
           <Input
-            placeholder="Ingrese usuario"
+            placeholder="Ingrese correo"
             autoCorrect={false}
             returnKeyType="done"
           />
@@ -37,7 +37,7 @@ const LoginScreen = () => {
       </View>
       <View style={{flex: 2}}>
         <TouchableOpacity
-          onPress={() => {}}
+          onPress={() => navigation.navigate('Home')}
           style={{
             alignItems: 'center',
             backgroundColor: '#47B27D',
