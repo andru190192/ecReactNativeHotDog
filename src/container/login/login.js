@@ -21,7 +21,7 @@ const Login = ({navigation}) => {
   }, []);
 
   useEffect(() => {
-    user && navigation.navigate('Home');
+    user && navigation.navigate('Home', { userId: 'Mo9fj0G6umMt7IsOGO6PVoMxQUB2' });
   }, [user]);
 
   function onHandlerLogin() {
@@ -29,7 +29,10 @@ const Login = ({navigation}) => {
         .signInWithEmailAndPassword(username, password)
         .then((user) => {
           console.warn('User account created & signed in!',user);
-          navigation.navigate('Home');
+          navigation.navigate('Home', {
+            screen: 'Profile',
+            params: { userId: 'Mo9fj0G6umMt7IsOGO6PVoMxQUB2' },
+          });
         })
         .catch(error => {
           if (error.code === 'auth/email-already-in-use') {
