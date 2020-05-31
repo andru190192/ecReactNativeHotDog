@@ -1,10 +1,10 @@
 /* eslint-disable react-native/no-inline-styles */
-import * as React from 'react';
-import {View, TouchableOpacity, Text} from 'react-native';
+import React from 'react';
+import { View, TouchableOpacity, Text } from 'react-native';
 import LottieView from 'lottie-react-native';
-import {Item, Input} from 'native-base';
+import { Item, Input } from 'native-base';
 
-const LoginScreen = ({navigation}) => {
+const LoginScreen = ({ onHandlerLogin, username, password, setUsername, setPassword }) => {
   return (
     <View
       style={{
@@ -24,6 +24,8 @@ const LoginScreen = ({navigation}) => {
             placeholder="Ingrese correo"
             autoCorrect={false}
             returnKeyType="done"
+            value={username}
+            onChangeText={(username) => setUsername(username)}
           />
         </Item>
         <Item>
@@ -32,12 +34,14 @@ const LoginScreen = ({navigation}) => {
             autoCorrect={false}
             returnKeyType="done"
             secureTextEntry
+            value={password}
+            onChangeText={(password) => setPassword(password)}
           />
         </Item>
       </View>
       <View style={{flex: 2}}>
         <TouchableOpacity
-          onPress={() => navigation.navigate('Home')}
+          onPress={onHandlerLogin}
           style={{
             alignItems: 'center',
             backgroundColor: '#47B27D',

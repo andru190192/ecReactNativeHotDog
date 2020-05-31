@@ -2,7 +2,7 @@ import * as React from 'react';
 import {createStackNavigator} from '@react-navigation/stack';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import Splash from '../screens/splash';
-import Login from '../screens/login';
+import Login from '../container/login';
 import Profile from '../screens/profile';
 import Query from '../screens/query';
 
