@@ -1,24 +1,42 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
+import auth from '@react-native-firebase/auth';
 import firestore from '@react-native-firebase/firestore';
 import ProfileScreen from '../../screens/profile';
+import { AuthContext } from '../../contexts/authContext';
 
-const Profile = ({ route }) => {
-  const { userId } = route.params;
+const Profile = ({navigation}) => {
+
+  const { userId } = useContext(AuthContext);
+  const [user, setUser] = useState();
+
   useEffect(() => {
-    console.warn('userId', userId)
     const subscriber = firestore()
         .collection('users')
         .doc(userId)
         .onSnapshot(documentSnapshot => {
           console.log('User data: ', documentSnapshot.data());
+          setUser(documentSnapshot.data());
+          console.log(user);
         });
 
     // Stop listening for updates when no longer required
     return () => subscriber();
   }, []);
 
+  const onHandlerLogout = () => {
+    auth().signOut().then(() => {
+      console.warn('User signed out!');
+      navigation.navigate('Login');
+    });
+  }
+
+  if (user === undefined) return null
+
   return (
-    <ProfileScreen />
+      <ProfileScreen
+        user={user}
+        onHandlerLogout={onHandlerLogout}
+      />
   );
 };
 

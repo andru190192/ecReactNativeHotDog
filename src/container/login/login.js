@@ -1,6 +1,8 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import auth from '@react-native-firebase/auth';
+import crashlytics from '@react-native-firebase/crashlytics';
 import LoginScreen from '../../screens/login';
+import { AuthContext } from '../../contexts/authContext';
 
 const Login = ({navigation}) => {
   // Set an initializing state whilst Firebase connects
@@ -8,6 +10,7 @@ const Login = ({navigation}) => {
   const [user, setUser] = useState();
   const [username, setUsername] = useState();
   const [password, setPassword] = useState();
+  const { setUserId } = useContext(AuthContext)
 
   // Handle user state changes
   function onAuthStateChanged(user) {
@@ -21,18 +24,24 @@ const Login = ({navigation}) => {
   }, []);
 
   useEffect(() => {
-    user && navigation.navigate('Home', { userId: 'Mo9fj0G6umMt7IsOGO6PVoMxQUB2' });
+    if (user) {
+      setUserId(user.uid);
+      navigation.navigate('Home', {
+        screen: 'Profile',
+      });
+    }
   }, [user]);
 
   function onHandlerLogin() {
     auth()
         .signInWithEmailAndPassword(username, password)
-        .then((user) => {
-          console.warn('User account created & signed in!',user);
+        .then((userLogin) => {
+          console.warn('User account created & signed in!',userLogin);
+          setUserId(userLogin.user.uid);
           navigation.navigate('Home', {
             screen: 'Profile',
-            params: { userId: 'Mo9fj0G6umMt7IsOGO6PVoMxQUB2' },
           });
+          crashlytics().setUserId(userLogin.user.uid);
         })
         .catch(error => {
           if (error.code === 'auth/email-already-in-use') {
