@@ -4,7 +4,7 @@ import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import Splash from '../screens/splash';
 import Login from '../container/login';
 import Profile from '../container/profile';
-import Query from '../screens/query';
+import Query from '../container/query';
 
 const Stack = createStackNavigator();
 const BottomTab = createBottomTabNavigator();
