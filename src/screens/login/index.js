@@ -8,7 +8,7 @@ const LoginScreen = ({ onHandlerLogin, username, password, setUsername, setPassw
   return (
     <View
       style={{
-        backgroundColor: 'white',
+        backgroundColor: '#FFA000',
         flex: 1,
       }}>
       <View style={{flex: 1, height: 30}}>
