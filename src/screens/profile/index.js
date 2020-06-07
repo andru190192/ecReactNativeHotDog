@@ -1,58 +1,45 @@
 /* eslint-disable react-native/no-inline-styles */
 import React from 'react';
-import {View, TouchableOpacity, Text, Image} from 'react-native';
 import {Item, Input} from 'native-base';
-import Icon from 'react-native-vector-icons/MaterialIcons';
+import {
+  MainContainer,
+  ProfileContainer,
+  ContainerHeader,
+  HeaderButton,
+  SessionClose,
+  ProfileTitle,
+  ProfileImage,
+  ProfileCamera,
+  ProfileCameraIcon,
+  Image,
+  ProfileInformationContainer,
+  Information,
+} from './index.styles';
 
 const ProfileScreen = ({user, onHandlerLogout}) => {
   return (
-    <View
-      style={{
-        backgroundColor: 'white',
-        flex: 1,
-        alignItems: 'center',
-        justifyContent: 'center',
-      }}>
-      <View
-        style={{
-          backgroundColor: '#FFCA28',
-          flex: 1,
-          alignSelf: 'stretch',
-        }}>
-        <Text
-          style={{
-            marginTop: 14,
-            color: 'white',
-            fontSize: 18,
-            textAlign: 'center',
-          }}>
-          Profile
-        </Text>
-        <View
-          style={{
-            marginTop: 34,
-            justifyContent: 'center',
-            alignItems: 'center',
-          }}>
+    <MainContainer>
+      <ProfileContainer>
+        <ContainerHeader>
+          <ProfileTitle>Profile</ProfileTitle>
+          <HeaderButton>
+            <SessionClose name="logout" size={24} />
+          </HeaderButton>
+        </ContainerHeader>
+        <ProfileImage>
           <Image
             source={{
               uri:
                 'https://raw.githubusercontent.com/AboutReact/sampleresource/master/old_logo.png',
             }}
-            style={{width: 100, height: 100, borderRadius: 200 / 2}}
           />
-        </View>
-        <TouchableOpacity style={{marginLeft: 24}}>
-          <Icon name="linked-camera" size={34} color="#2C384A" />
-        </TouchableOpacity>
-      </View>
-      <View
-        style={{
-          backgroundColor: '#ECEFF1',
-          flex: 2,
-          alignSelf: 'stretch',
-        }}>
-        <View style={{marginTop: 24, marginHorizontal: 24, marginBottom: 34}}>
+        </ProfileImage>
+        <ProfileCamera>
+          <ProfileCameraIcon name="linked-camera" size={34} />
+        </ProfileCamera>
+      </ProfileContainer>
+      <ProfileInformationContainer>
+        <Information>
           <Item style={{marginBottom: 24}}>
             <Input
               placeholder={user.username}
@@ -69,7 +56,7 @@ const ProfileScreen = ({user, onHandlerLogout}) => {
               disabled
             />
           </Item>
-        </View>
+        </Information>
         {/* <TouchableOpacity
           onPress={onHandlerLogout}
           style={{
@@ -92,8 +79,8 @@ const ProfileScreen = ({user, onHandlerLogout}) => {
             Cerrar Sesión
           </Text>
         </TouchableOpacity> */}
-      </View>
-    </View>
+      </ProfileInformationContainer>
+    </MainContainer>
   );
 };
 
