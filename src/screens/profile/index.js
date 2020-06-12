@@ -16,25 +16,25 @@ import {
   Information,
 } from './index.styles';
 
-const ProfileScreen = ({user, onHandlerLogout}) => {
+const ProfileScreen = ({user, onHandlerLogout, onHandlerPicker, image}) => {
+  console.log('imagen en el screen :', image);
   return (
     <MainContainer>
       <ProfileContainer>
         <ContainerHeader>
           <ProfileTitle>Profile</ProfileTitle>
           <HeaderButton>
-            <SessionClose name="logout" size={24} />
+            <SessionClose name="logout" size={28} />
           </HeaderButton>
         </ContainerHeader>
         <ProfileImage>
           <Image
             source={{
-              uri:
-                'https://raw.githubusercontent.com/AboutReact/sampleresource/master/old_logo.png',
+              uri: `${image}`,
             }}
           />
         </ProfileImage>
-        <ProfileCamera>
+        <ProfileCamera onPress={onHandlerPicker}>
           <ProfileCameraIcon name="linked-camera" size={34} />
         </ProfileCamera>
       </ProfileContainer>
@@ -56,29 +56,7 @@ const ProfileScreen = ({user, onHandlerLogout}) => {
               disabled
             />
           </Item>
-        </Information>
-        {/* <TouchableOpacity
-          onPress={onHandlerLogout}
-          style={{
-            alignItems: 'center',
-            backgroundColor: '#47B27D',
-            marginHorizontal: 34,
-            height: 45,
-            justifyContent: 'center',
-            textAlign: 'center',
-            borderRadius: 10,
-            marginVertical: 10,
-          }}>
-          <Text
-            style={{
-              color: 'white',
-              fontWeight: 'bold',
-              fontSize: 16,
-              paddingHorizontal: 20,
-            }}>
-            Cerrar Sesión
-          </Text>
-        </TouchableOpacity> */}
+        </Information> 
       </ProfileInformationContainer>
     </MainContainer>
   );
