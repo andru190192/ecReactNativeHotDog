@@ -4,7 +4,14 @@ import { View, TouchableOpacity, Text } from 'react-native';
 import LottieView from 'lottie-react-native';
 import { Item, Input } from 'native-base';
 
-const LoginScreen = ({ onHandlerLogin, username, password, setUsername, setPassword }) => {
+const LoginScreen = ({
+  onHandlerLogin,
+  username,
+  password,
+  setUsername,
+  setPassword,
+  onHandlerRegister,
+}) => {
   return (
     <View
       style={{
@@ -57,7 +64,7 @@ const LoginScreen = ({ onHandlerLogin, username, password, setUsername, setPassw
           </Text>
         </TouchableOpacity>
         <TouchableOpacity
-          onPress={() => {}}
+          onPress={onHandlerRegister}
           style={{
             alignItems: 'center',
             backgroundColor: '#1273DE',
@@ -69,22 +76,7 @@ const LoginScreen = ({ onHandlerLogin, username, password, setUsername, setPassw
             marginVertical: 10,
           }}>
           <Text style={{color: 'white', fontWeight: 'bold', fontSize: 16}}>
-            Ingresar con Google
-          </Text>
-        </TouchableOpacity>
-        <TouchableOpacity
-          onPress={() => {}}
-          style={{
-            alignItems: 'center',
-            backgroundColor: '#626B75',
-            marginHorizontal: 34,
-            height: 45,
-            justifyContent: 'center',
-            textAlign: 'center',
-            borderRadius: 10,
-          }}>
-          <Text style={{color: 'white', fontWeight: 'bold', fontSize: 16}}>
-            Ingresar con GitHub
+            Registrarse
           </Text>
         </TouchableOpacity>
       </View>

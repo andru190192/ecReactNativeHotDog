@@ -1,16 +1,22 @@
 import React from 'react';
 import {View, TouchableOpacity, Text} from 'react-native';
+import { Image, InfoContainer } from './index.styles';
+import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 
-const QueryScreen = ({onHandlerPicker, onHandlerOpenCamera, isHotDog}) => {
+const QueryScreen = ({onHandlerPicker, onHandlerOpenCamera, isHotDog, url}) => {
+  console.log('url image', url);
   return (
     <View
       style={{
         backgroundColor: 'white',
         flex: 1,
         alignItems: 'center',
-        justifyContent: 'center',
       }}>
-      <Text>Query</Text>
+      {url && <InfoContainer isHotDog={isHotDog}>
+        <Icon name={`${isHotDog ? 'check' : 'close'}`} size={30} />
+        <Text>{`${isHotDog ? '' : 'Not'} Hotdog`}</Text>
+      </InfoContainer>}
+      <Image source={{ uri: `${url}`}} />
       <TouchableOpacity
         onPress={onHandlerPicker}
         style={{
@@ -62,7 +68,6 @@ const QueryScreen = ({onHandlerPicker, onHandlerOpenCamera, isHotDog}) => {
           fontSize: 16,
           paddingHorizontal: 20,
         }}>
-        {isHotDog ? 'Si es un Hot Dog' : 'no es'}
       </Text>
     </View>
   );

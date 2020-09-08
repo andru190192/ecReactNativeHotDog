@@ -57,6 +57,10 @@ export const ProfileCamera = styled.TouchableOpacity`
   margin-left: 24;
 `;
 
+export const ProfileLogout = styled.TouchableOpacity`
+  margin-left: 24;
+`;
+
 export const ProfileCameraIcon = styled(Icon)`
   color: #039BE5;
 `;

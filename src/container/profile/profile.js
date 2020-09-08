@@ -14,7 +14,7 @@ const Profile = ({navigation}) => {
       .collection('users')
       .doc(userId)
       .onSnapshot(documentSnapshot => {
-        console.log('User data: ', documentSnapshot.data());
+        //console.log('User data: ', documentSnapshot.data());
         setUser(documentSnapshot.data());
         console.log(user);
       });
@@ -29,6 +29,7 @@ const Profile = ({navigation}) => {
       height: 400,
       cropping: true,
     });
+    console.log('image', image);
     await setImage(image.path);
   };
 

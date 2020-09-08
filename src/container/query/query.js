@@ -3,10 +3,11 @@ import storage from '@react-native-firebase/storage';
 import ImagePicker from 'react-native-image-crop-picker';
 import QueryScreen from '../../screens/query';
 
-const Profile = ({navigation}) => {
+const Profile = () => {
   const VISION_API_KEY = 'AIzaSyD1JobpnvqF3dArUScULFmF0n8zmBW4z08';
   const reference = storage().ref('image.jpg');
   const [isHotDog, setHotDog] = useState(false);
+  const [url, setUrl] = useState(undefined);
 
   const onHandlerPicker = async () => {
     const image = await ImagePicker.openPicker({
@@ -33,6 +34,7 @@ const Profile = ({navigation}) => {
     const url = await storage()
       .ref('image.jpg')
       .getDownloadURL();
+    setUrl(url);
     // build request from api vision
     let body = JSON.stringify({
       requests: [
@@ -70,6 +72,7 @@ const Profile = ({navigation}) => {
       onHandlerPicker={onHandlerPicker}
       onHandlerOpenCamera={onHandlerOpenCamera}
       isHotDog={isHotDog}
+      url={url}
     />
   );
 };

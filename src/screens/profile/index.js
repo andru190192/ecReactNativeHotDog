@@ -1,5 +1,6 @@
 /* eslint-disable react-native/no-inline-styles */
 import React from 'react';
+import {TouchableOpacity} from 'react-native';
 import {Item, Input} from 'native-base';
 import {
   MainContainer,
@@ -17,22 +18,17 @@ import {
 } from './index.styles';
 
 const ProfileScreen = ({user, onHandlerLogout, onHandlerPicker, image}) => {
-  console.log('imagen en el screen :', image);
   return (
     <MainContainer>
       <ProfileContainer>
         <ContainerHeader>
           <ProfileTitle>Profile</ProfileTitle>
-          <HeaderButton>
+          <HeaderButton onPress={onHandlerLogout}>
             <SessionClose name="logout" size={28} />
           </HeaderButton>
         </ContainerHeader>
         <ProfileImage>
-          <Image
-            source={{
-              uri: `${image}`,
-            }}
-          />
+        {image ? <Image source={{ uri: `${image}`}} /> : null}
         </ProfileImage>
         <ProfileCamera onPress={onHandlerPicker}>
           <ProfileCameraIcon name="linked-camera" size={34} />

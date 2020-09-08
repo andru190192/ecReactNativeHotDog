@@ -6,6 +6,7 @@ import Splash from '../screens/splash';
 import Login from '../container/login';
 import Profile from '../container/profile';
 import Query from '../container/query';
+import Register from '../container/register';
 
 const Stack = createStackNavigator();
 const BottomTab = createBottomTabNavigator();
@@ -24,6 +25,13 @@ const StackLogoutNavigator = () => {
       <Stack.Screen
         name={'Login'}
         component={Login}
+        options={{
+          headerShown: false,
+        }}
+      />
+      <Stack.Screen
+        name={'Register'}
+        component={Register}
         options={{
           headerShown: false,
         }}

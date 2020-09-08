@@ -34,7 +34,7 @@ const Login = ({navigation}) => {
     }
   }, [navigation, setUserId, user]);
 
-  function onHandlerLogin() {
+  const onHandlerLogin = () => {
     auth()
       .signInWithEmailAndPassword(username, password)
       .then(userLogin => {
@@ -58,6 +58,10 @@ const Login = ({navigation}) => {
       });
   }
 
+  const onHandlerRegister = () => {
+    navigation.navigate('Register');
+  }
+
   if (initializing) {
     return null;
   }
@@ -66,6 +70,7 @@ const Login = ({navigation}) => {
     return (
       <LoginScreen
         onHandlerLogin={onHandlerLogin}
+        onHandlerRegister={onHandlerRegister}
         username={username}
         password={password}
         setUsername={username => setUsername(username)}

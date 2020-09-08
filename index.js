@@ -6,6 +6,7 @@ import analytics from '@react-native-firebase/analytics';
 
 crashlytics().setCrashlyticsCollectionEnabled(true);
 analytics().setAnalyticsCollectionEnabled(true);
-require('react-native').unstable_enableLogBox();
+//require('react-native').unstable_enableLogBox();
+console.disableYellowBox = true;
 
 AppRegistry.registerComponent(appName, () => App);
